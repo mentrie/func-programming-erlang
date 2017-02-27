@@ -1,5 +1,5 @@
 -module(four).
--export([fib/1, pieces/1, tail/1, perfect/1]).
+-export([fib/1, pieces/1, tail/1, perfect/1, fibDir/1]).
 
 fibOf(0) ->
     0;
@@ -27,6 +27,14 @@ tail(0, P) ->
 	P;
 tail(N, P) when N>0 -> tail(N-1, P*N).
 
+% Direct recursion
+recur(0) -> 
+    {0, 1};
+recur(N) ->
+    {P, C} = recur(N-1), {C, P+C}.
+fibDir(N) -> 
+    {P, _} = recur(N), P.
+
  % Perfect number
 perfect(N, N, S) ->
 	N==S;
@@ -39,3 +47,4 @@ perfect(N, M, S) ->
 
 perfect(N) ->
 	perfect(N, 0, 1).
+
