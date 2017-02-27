@@ -1,7 +1,7 @@
 -module(assignment).
 -export([perimeter/1, area/1, enclose/1, bit/1]).
 
-
+% perimeter implementation
 perimeter({circle, R}) ->
 	2 * math:pi() * R;
 
@@ -20,7 +20,7 @@ perimeter({triangle, A}) ->
 perimeter(S) ->
 	io:format("~s Shape not known ~n", [element(1,S)]).
 
-
+% area implementation
 area({circle, R}) ->
 	2 * math:pi()*R*R;
 
@@ -39,7 +39,7 @@ area({triangle, B,H}) ->
 area(S) -> 
  io:format('~p not known ~n', [element(1, S)]).
 
-
+% enclose implementation
 enclose({circle, R}) ->
 	{triangle, 2*R, 2*R};
 
@@ -50,6 +50,7 @@ enclose({rectangle, W, _H}) ->
 	{circle, 2*W}.
 
 
+% bit implementation
 bitOf(0, M, P) ->
 	P;
 
